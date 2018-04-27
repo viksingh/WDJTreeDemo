@@ -1,0 +1,55 @@
+ IContextElement el = wdContext.currentContextElement();
+	  el.setIdx(0);
+
+	  
+	  
+	   
+	    for (int i = 0; i < 3; i++) {
+	    	ICustomerNode customerNode =     wdContext.nodeCustomer();	    	
+
+	       ICustomerElement customer =        customerNode.createCustomerElement();
+	       customer.setId("Customer No:" + i);
+	       customerNode.addElement(customer);
+	      
+	       
+	       
+	       IOrderNode orderNode = customerNode.nodeOrder(i);
+	       for (int j = 0; j < 3; j++) {
+	    	   
+	    	   wdComponentAPI.getMessageManager().reportSuccess( "Adding to Customer No:" + i);
+
+	          IOrderElement order =           orderNode.createOrderElement();
+	          order.setId("Order Id:" + i + ":" + j);
+	          order.setText("Order Text:" + i + ":" + j);
+	          orderNode.addElement(order);
+	      
+	          
+	          
+	        /*  IItemNode itemNode = orderNode.nodeItem();
+	          for (int k = 0; k < 5; k++) {
+
+	             IItemElement item =               itemNode.createItemElement();
+	             item.setId("Item Id:" + i + ":" + j + ":" +k);
+	             item.setText("Item Id:"+ i + ":" + j + ":" +k);
+	             itemNode.addElement(item);
+	          } */
+	       } 
+	      
+
+	      /* IPurchaseOrderNode purchaseOrderNode =        customerNode.nodePurchaseOrder();
+	       for (int j = 0; j < 3; j++) {
+
+	          IPurchaseOrderElement purchaseOrder =           purchaseOrderNode.createPurchaseOrderElement();
+	          purchaseOrder.setText("Purchase Order:" + i + ":" + j);
+	          purchaseOrderNode.addElement(purchaseOrder);
+	      
+
+	          IPurchaseitemNode purchaseItemNode =           purchaseOrderNode.nodePurchaseitem();
+	          for (int k = 0; k < 5; k++) {
+
+	             IPurchaseitemElement purchaseItem =              purchaseItemNode.createPurchaseitemElement();
+	             purchaseItem.setText("Purchase Item Id:"+ i + ":" + j + ":" +k);
+	             purchaseItemNode.addElement(purchaseItem);
+	          } 
+	       } */
+	    }
